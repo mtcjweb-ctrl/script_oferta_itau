@@ -1,4 +1,3 @@
-HTML
 <script>
 (function () {
 
@@ -17,12 +16,10 @@ HTML
       sessionStorage.getItem("commerce_info") || "null"
     );
   } catch (error) {
-    console.error("Error al leer commerce_info:", error);
     commerceInfo = null;
   }
 
   if (!commerceInfo) {
-    console.warn("No se encontró commerce_info en sessionStorage");
     return;
   }
 
@@ -74,20 +71,9 @@ HTML
   // =====================================================
 
   var ruts_banner_CCIT1 = [
-    "15250908-1",
-    "15691092-9"
   ];
 
-  var rut_comercio = sessionStorage.getItem("rut");
-
-  if (
-    typeof window.rut_comercio !== "undefined" &&
-    window.rut_comercio
-  ) {
-    rut_comercio = window.rut_comercio;
-  }
-
-  var rtcoCCIT1 = rut_comercio;
+  var rtcoCCIT1 = commerceInfo.commerce_rut;
 
   // =====================================================
   // CONTROL DE VISUALIZACIÓN DEL BANNER
@@ -216,10 +202,6 @@ HTML
         return;
       }
 
-      console.log(
-        "Click detectado en No quiero el plan"
-      );
-
       var fechaNoShow = new Date();
       fechaNoShow.setDate(
         fechaNoShow.getDate() + 3000
@@ -230,19 +212,9 @@ HTML
         "1",
         fechaNoShow
       );
-
-      console.log(
-        "Cookie No Show:",
-        obtenerCookie(cookieNoShowCCIT1)
-      );
-
     }, true);
 
     listenerInstaladoCCIT1 = true;
-
-    console.log(
-      "Listener No Show instalado correctamente"
-    );
 
     return true;
   }
